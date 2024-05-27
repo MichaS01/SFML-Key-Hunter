@@ -145,9 +145,15 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source\Game.cpp" />
+    <ClCompile Include="Source\Object.cpp" />
+    <ClCompile Include="Source\Platform.cpp" />
+    <ClCompile Include="Source\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Game.h" />
+    <ClInclude Include="Headers\Object.h" />
+    <ClInclude Include="Headers\Platform.h" />
+    <ClInclude Include="Headers\Player.h" />
     <ClInclude Include="Headers\Settings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
