@@ -143,18 +143,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\CollisionObject.cpp" />
+    <ClCompile Include="Engine\GameManager.cpp" />
+    <ClCompile Include="Engine\Key.cpp" />
+    <ClCompile Include="Engine\Level.cpp" />
+    <ClCompile Include="Engine\Platform.cpp" />
+    <ClCompile Include="Engine\Player.cpp" />
+    <ClCompile Include="Engine\Room.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Source\Game.cpp" />
-    <ClCompile Include="Source\Object.cpp" />
-    <ClCompile Include="Source\Platform.cpp" />
-    <ClCompile Include="Source\Player.cpp" />
+    <ClCompile Include="Menus\GameOverMenu.cpp" />
+    <ClCompile Include="Menus\MainMenu.cpp" />
+    <ClCompile Include="Menus\PauseMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\CollisionObject.h" />
+    <ClInclude Include="Engine\GameManager.h" />
+    <ClInclude Include="Engine\Key.h" />
+    <ClInclude Include="Engine\Level.h" />
+    <ClInclude Include="Engine\Menu.h" />
+    <ClInclude Include="Engine\Platform.h" />
+    <ClInclude Include="Engine\Player.h" />
+    <ClInclude Include="Engine\Room.h" />
+    <ClInclude Include="Engine\Settings.h" />
     <ClInclude Include="Headers\Game.h" />
     <ClInclude Include="Headers\Object.h" />
     <ClInclude Include="Headers\Platform.h" />
     <ClInclude Include="Headers\Player.h" />
     <ClInclude Include="Headers\Settings.h" />
+    <ClInclude Include="Levels\Levels.h" />
+    <ClInclude Include="Levels\TestLevel.h" />
+    <ClInclude Include="Menus\GameOverMenu.h" />
+    <ClInclude Include="Menus\MainMenu.h" />
+    <ClInclude Include="Menus\MenusList.h" />
+    <ClInclude Include="Menus\PauseMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

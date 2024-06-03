@@ -1,6 +1,6 @@
-#include "Headers/Game.h"
+#include "Engine/GameManager.h"
 
 int main() {
-	Game* game = new Game();
-	return 0;
+    GameManager* GM = new GameManager();
+    return 0;
 }
