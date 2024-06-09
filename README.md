@@ -10,9 +10,13 @@ Enjoy the game.
 
 ## 2. Control
 ↑ - Jump
+
 ↑ + Space - Super jump
+
 ↓ - crouch
+
 ← - move left
+
 → - move to the right
 
 ## 3. Configuration and launch of the project
