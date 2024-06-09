@@ -158,6 +158,129 @@ void Player::animationControl(std::vector<Platform*> _platforms) {
 			!sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || m_IsJumping || m_IsFalling) &&
 		!m_Splashed) {
 
+		// Animacja chodzenia
 		if (!m_IsJumping) {
 			m_AnimationIndex++;
-			if (m_AnimationIndex > ANIMATIONFRAMES::
+			if (m_AnimationIndex > ANIMATIONFRAMES::WALK02)
+				m_AnimationIndex = ANIMATIONFRAMES::WALK00;
+		}
+
+		// Chodzenie jeœli nie ma kolizji
+		if (getPosition().x + getCollider().width < WINDOW_X + getCollider().width) {
+			m_Sprite.move(PLAYER_SPEED / 100.0f, 0.0f);
+			m_Sprite.setScale(1.0f, 1.0f);
+			m_Sprite.setOrigin(0, 0.0f);
+		}
+
+		// Sprawdzanie kolizji z platform¹
+		for (Platform* platform : _platforms) {
+			if (getPosition().x <= platform->getPosition().x + platform->getCollider().width &&
+				getPosition().x + getCollider().width > platform->getPosition().x &&
+				getPosition().y <= platform->getPosition().y + platform->getCollider().height &&
+				getPosition().y + getCollider().height > platform->getPosition().y - 40.0f) {
+				m_Sprite.setPosition(getPosition().x - PLAYER_SPEED / 75.0f, getPosition().y);
+				m_Sprite.setScale(1.0f, 1.0f);
+				m_Sprite.setOrigin(0, 0.0f);
+				break;
+			}
+		}
+	}
+	
+	// Kontrola animacji podczas ruchu w prawo
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) &&
+		(!sf::Keyboard::isKeyPressed(sf::Keyboard::Down) &&
+			!sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || m_IsJumping || m_IsFalling) &&
+		!m_Splashed) {
+
+		// Animacja chodzenia
+		if (!m_IsJumping) {
+			m_AnimationIndex++;
+			if (m_AnimationIndex > ANIMATIONFRAMES::WALK02)
+				m_AnimationIndex = ANIMATIONFRAMES::WALK00;
+		}
+
+		// Chodzenie jeœli nie ma kolizji
+		if (getPosition().x + getCollider().width < WINDOW_X + getCollider().width) {
+			m_Sprite.move(PLAYER_SPEED / 100.0f, 0.0f);
+			m_Sprite.setScale(1.0f, 1.0f);
+			m_Sprite.setOrigin(0, 0.0f);
+		}
+
+		// Sprawdzanie kolizji z platform¹
+		for (Platform* platform : _platforms) {
+			if (getPosition().x <= platform->getPosition().x + platform->getCollider().width &&
+				getPosition().x + getCollider().width > platform->getPosition().x &&
+				getPosition().y <= platform->getPosition().y + platform->getCollider().height &&
+				getPosition().y + getCollider().height > platform->getPosition().y - 40.0f) {
+				m_Sprite.setPosition(getPosition().x - PLAYER_SPEED / 75.0f, getPosition().y);
+				m_Sprite.setScale(1.0f, 1.0f);
+				m_Sprite.setOrigin(0, 0.0f);
+				break;
+			}
+		}
+	}
+
+	// Spojrzenie w górê / wstanie
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		m_AnimationIndex = ANIMATIONFRAMES::UP;
+		if (m_Splashed) m_Splashed = false;
+	}
+
+	// £adowanie power jumpa
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !m_Splashed) {
+		m_AnimationIndex = ANIMATIONFRAMES::DOWN;
+		if (m_PowerJump < 1.5f) m_PowerJump += 0.005f;
+	} else m_PowerJump = 1.0f;
+
+	// Animacje skoku / spadania / "sp³aszczenia"
+	if (m_IsJumping) m_AnimationIndex = ANIMATIONFRAMES::JUMP;
+	if (m_IsFalling) m_AnimationIndex = ANIMATIONFRAMES::FALL;
+	if (m_Splashed) m_AnimationIndex = ANIMATIONFRAMES::FLAT;
+}
+
+// Kontrola pokojów gracza i umieszczanie go na krawêdziach
+void Player::roomControl() {
+	if (this->getPosition().x + (this->getCollider().width / 2.0f) < 0.0f)
+		this->m_GameManager->changeRoom(Level::DIRECTION::LEFT);
+	else if (this->getPosition().x + (this->getCollider().width / 2.0f) > WINDOW_X)
+		this->m_GameManager->changeRoom(Level::DIRECTION::RIGHT);
+	else if (this->getPosition().y + (this->getCollider().height / 2) < 0.0f)
+		this->m_GameManager->changeRoom(Level::DIRECTION::UP);
+	else if (this->getPosition().y + (this->getCollider().height / 2) > WINDOW_Y)
+		this->m_GameManager->changeRoom(Level::DIRECTION::DOWN);
+}
+
+// Kontrola podnoszonych kluczy - podniesienie klucza uruchamia dŸwiêk, ostatniego klucza koñczy grê
+void Player::progressionControl(vector<Key*>* _keys) {
+	if (!this->m_GameManager->getCurrentLevel()->getKeys()) {
+		this->m_GameManager->setMenu(new GameOverMenu(*this->m_GameManager), GameManager::GAMESTATE::OVER);
+		return;
+	}
+
+	for (auto it = _keys->begin(); it != _keys->end(); ++it) {
+		Key* key = *it;
+		if (this->getPosition().x + this->getCollider().width > key->getPosition().x &&
+			this->getPosition().x <= key->getPosition().x + key->getCollider().width &&
+			this->getPosition().y + this->getCollider().height > key->getPosition().y &&
+			this->getPosition().y <= key->getPosition().y + key->getCollider().height) {
+
+			delete key;
+			_keys->erase(remove(_keys->begin(), _keys->end(), key), _keys->end());
+			this->m_GameManager->getCurrentLevel()->remKey();
+			this->m_Sounds[SFXS::COINSOUND]->play();
+			break;
+		}
+	}
+}
+
+// Inicjalizacja dŸwiêków gracza
+void Player::loadSounds() {
+	for (string sound : this->m_SoundLibrary) {
+		SoundBuffer* buffer = new SoundBuffer();
+		buffer->loadFromFile("Assets/Sounds/SFX/" + sound);
+		Sound* sound = new Sound(*buffer);
+		this->m_SoundBuffers.push_back(buffer);
+		sound->setVolume(25.0f);
+		this->m_Sounds.push_back(sound);
+	}
+}
