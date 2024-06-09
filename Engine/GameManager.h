@@ -1,44 +1,56 @@
-#pragma once
-#include "Player.h"
-#include "../Levels/Levels.h"
-#include "../Menus/MenusList.h"
+#pragma once // Zapewnia, ¿e ten plik nag³ówkowy jest do³¹czany tylko raz podczas kompilacji
 
-class Menu;
+#include "Player.h" // Do³¹cza plik nag³ówkowy Player
+#include "../Levels/Levels.h" // Do³¹cza plik nag³ówkowy Levels
+#include "../Menus/MenusList.h" // Do³¹cza plik nag³ówkowy MenusList
 
+class Menu; // Deklaracja wstêpna klasy Menu
+
+// Klasa GameManager zarz¹dza stanem gry i jej elementami
 class GameManager {
 private:
-	int m_GameState;
-	HWND m_WindowHandler;
+    int m_GameState; // Zmienna przechowuj¹ca stan gry
+    HWND m_WindowHandler; // Uchwyt okna gry
 
-	Player* m_Player;
-	Level* m_CurrentLevel;
-	Menu* m_Menu;
-	RenderWindow* m_Window;
+    Player* m_Player; // WskaŸnik na obiekt gracza
+    Level* m_CurrentLevel; // WskaŸnik na bie¿¹cy poziom
+    Menu* m_Menu; // WskaŸnik na aktualne menu
+    RenderWindow* m_Window; // WskaŸnik na okno renderowania
 
-	Event m_Event;
+    Event m_Event; // Obiekt przechowuj¹cy zdarzenia
 
-	
-	void loadSettings(void);
-	void eventManager(void);
-	void render(void);
+    // £aduje ustawienia gry
+    void loadSettings(void);
+    // Zarz¹dza zdarzeniami w grze
+    void eventManager(void);
+    // Renderuje aktualny stan gry
+    void render(void);
 
 public:
-	enum GAMESTATE {
-		MAINMENU,
-		PLAYING,
-		PAUSED,
-		OVER
-	};
+    // Enumaracja stanów gry
+    enum GAMESTATE {
+        MAINMENU,
+        PLAYING,
+        PAUSED,
+        OVER
+    };
 
-	GameManager();
+    // Konstruktor klasy GameManager
+    GameManager(void);
 
-	Level* getCurrentLevel(void) { return this->m_CurrentLevel; }
-	Player* getPlayer(void) { return this->m_Player; }
+    // Zwraca wskaŸnik na bie¿¹cy poziom
+    Level* getCurrentLevel(void) { return this->m_CurrentLevel; }
+    // Zwraca wskaŸnik na obiekt gracza
+    Player* getPlayer(void) { return this->m_Player; }
 
-	int getGameStatus(void) { return this->m_GameState; };
+    // Zwraca aktualny stan gry
+    int getGameStatus(void) { return this->m_GameState; };
 
-	void setMenu(Menu*, int);
-	void restartGame(void);
+    // Ustawia menu i jego stan
+    void setMenu(Menu*, int);
+    // Restartuje grê
+    void restartGame(void);
 
-	void changeRoom(int);
+    // Zmienia pokój na podany indeks
+    void changeRoom(int);
 };
