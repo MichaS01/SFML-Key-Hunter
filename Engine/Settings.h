@@ -1,5 +1,5 @@
 #pragma once
-
+#define _CRT_SECURE_NO_WARNINGS
 #include <SFML/Graphics.hpp> // Biblioteka SFML do obs³ugi grafiki
 #include <SFML/Audio.hpp> // Biblioteka SFML do obs³ugi dŸwiêku
 #include <vector> // Standardowa biblioteka C++ do obs³ugi wektorów
@@ -7,6 +7,7 @@
 #include <time.h> // Biblioteka C do obs³ugi czasu
 #include <Windows.h> // Biblioteka Windows.h do obs³ugi funkcji systemowych systemu Windows
 #include <conio.h> // Biblioteka conio.h do obs³ugi funkcji do kontroli konsoli
+#include <fstream> // Standardowa biblioteka C++ do obs³ugi strumieni plików
 
 // Deklaracje u¿ywanych typów danych z biblioteki SFML
 using sf::Text;
@@ -22,6 +23,7 @@ using sf::Vector2i;
 using sf::Event;
 using sf::Color;
 using sf::Mouse;
+using sf::Clock;
 using sf::Keyboard;
 using sf::Music;
 using sf::Sound;
@@ -29,11 +31,13 @@ using sf::SoundBuffer;
 
 using std::vector; // U¿ycie przestrzeni nazw std do u³atwienia korzystania z wektorów
 using std::string; // U¿ycie przestrzeni nazw std do u³atwienia korzystania ze stringów
+using std::ofstream; // U¿ycie przestrzeni nazw std do obs³ugi strumieni plików
+using std::getenv; // U¿ycie przestrzeni nazw std do obs³ugi zmiennych œrodowiskowych
 using std::to_string; // U¿ycie przestrzeni nazw std do u³atwienia konwersji typów liczbowych na stringi
 using std::remove; // U¿ycie przestrzeni nazw std do u³atwienia usuwania elementów z kontenerów
 
 #define DISABLE_TASKBAR TRUE // Sta³a definuj¹ca wy³¹czenie paska zadañ
-#define ENABLE_CONSOLE FALSE // Sta³a definuj¹ca wy³¹czenie konsoli
+#define ENABLE_CONSOLE TRUE // Sta³a definuj¹ca wy³¹czenie konsoli
 #define DEBUGGING FALSE // Sta³a definuj¹ca tryb debugowania
 
 const string GAME_TITLE = "Key Hunter"; // Tytu³ gry

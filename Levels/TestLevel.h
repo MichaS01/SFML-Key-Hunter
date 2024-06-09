@@ -17,7 +17,7 @@ public:
 			PlatformAdder({ 220.0f, 590.0f }, { 1.0f, 0.1f }, { 1, 1 }),
 			PlatformAdder({ 510.0f, 470.0f }, { 1.0f, 0.1f }, { 1, 1 }),
 			PlatformAdder({ 300.0f, 280.0f }, { 1.0f, 0.1f }, { 1, 1 }),
-			PlatformAdder({ 70.0f, 225.0f }, { 1.0f, 0.1f }, { 1, 1 }),
+			PlatformAdder({ 70.0f, 245.0f }, { 1.0f, 0.1f }, { 1, 1 }),
 			PlatformAdder({ 710.0f, 250.0f }, { 1.0f, 0.1f }, { 1, 1 }),
 			KeyAdder({ 80.0f, 160.0f }, { 0.75f, 0.75f }),
 		});

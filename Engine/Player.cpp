@@ -253,7 +253,7 @@ void Player::roomControl() {
 // Kontrola podnoszonych kluczy - podniesienie klucza uruchamia dŸwiêk, ostatniego klucza koñczy grê
 void Player::progressionControl(vector<Key*>* _keys) {
 	if (!this->m_GameManager->getCurrentLevel()->getKeys()) {
-		this->m_GameManager->setMenu(new GameOverMenu(*this->m_GameManager), GameManager::GAMESTATE::OVER);
+		this->m_GameManager->gameOver();
 		return;
 	}
 

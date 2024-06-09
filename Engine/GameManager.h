@@ -17,6 +17,10 @@ private:
     Menu* m_Menu; // WskaŸnik na aktualne menu
     RenderWindow* m_Window; // WskaŸnik na okno renderowania
 
+    int m_GameTime; // Zmienna przechowuj¹ca czas gry
+    float m_ElapsedTime; // Zmienna przechowuj¹ca czas, jaki up³yn¹³ podczas liczenia
+
+    Clock m_Clock; // Obiekt przechowuj¹cy zegar
     Event m_Event; // Obiekt przechowuj¹cy zdarzenia
 
     // £aduje ustawienia gry
@@ -50,6 +54,9 @@ public:
     void setMenu(Menu*, int);
     // Restartuje grê
     void restartGame(void);
+
+    // Koniec gry
+    void gameOver(void);
 
     // Zmienia pokój na podany indeks
     void changeRoom(int);

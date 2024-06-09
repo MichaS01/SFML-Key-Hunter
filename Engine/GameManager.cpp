@@ -88,6 +88,9 @@ void GameManager::restartGame(void) {
     this->m_GameState = GAMESTATE::PLAYING; // Ustawia stan gry na PLAYING
     this->m_Player = new Player(this); // Tworzy nowego gracza
     this->m_CurrentLevel = new TestLevel(this); // Tworzy nowy poziom testowy
+
+    this->m_GameTime = 0; // Zeruje up³yniêty czas gry
+    this->m_ElapsedTime = 0.f; // Zeruje czas zegara
 }
 
 // Funkcja zmieniaj¹ca pokój w poziomie
@@ -115,6 +118,20 @@ void GameManager::changeRoom(int _direction) {
             }
 }
 
+// Funkcja koñcz¹ca grê
+void GameManager::gameOver(void) {
+    this->setMenu(new GameOverMenu(*this), GameManager::GAMESTATE::OVER);
+
+    // Zapis wyniku gry
+    ofstream scoreBoard("Scoreboard.txt", std::ios::app);
+    if (scoreBoard.is_open()) {
+        int minutes = this->m_GameTime / 60;
+        int hours = minutes / 60;
+        scoreBoard << getenv("USERNAME") << " | " << hours << ":" << minutes % 60 << ":" << this->m_GameTime % 60 << '\n';
+        scoreBoard.close();
+    }
+}
+
 // Funkcja renderuj¹ca stan gry
 void GameManager::render() {
     // Dopóki okno jest otwarte
@@ -126,6 +143,17 @@ void GameManager::render() {
         if (GetForegroundWindow() != this->m_WindowHandler &&
             this->getGameStatus() == GAMESTATE::PLAYING)
             this->setMenu(new PauseMenu(*this), GAMESTATE::PAUSED); // Ustaw menu pauzy
+
+        // Jeœli stan gry to PLAYING odmierza czas
+        if (this->getGameStatus() == GAMESTATE::PLAYING) {
+            this->m_ElapsedTime += this->m_Clock.restart().asSeconds();
+            
+            if (this->m_ElapsedTime >= 1.f) {
+                this->m_ElapsedTime = 0.f;
+                this->m_GameTime++;
+                std::cout << this->m_ElapsedTime << std::endl;
+            }
+        }
 
         this->m_Window->clear(); // Wyczyœæ okno
         //
