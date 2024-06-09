@@ -166,21 +166,21 @@ void Player::animationControl(std::vector<Platform*> _platforms) {
 		}
 
 		// Chodzenie jeœli nie ma kolizji
-		if (getPosition().x + getCollider().width < WINDOW_X + getCollider().width) {
-			m_Sprite.move(PLAYER_SPEED / 100.0f, 0.0f);
-			m_Sprite.setScale(1.0f, 1.0f);
-			m_Sprite.setOrigin(0, 0.0f);
+		if (getPosition().x > 0.0f - getCollider().width) {
+			m_Sprite.move(-PLAYER_SPEED / 100.0f, 0.0f);
+			m_Sprite.setScale(-1.0f, 1.0f);
+			m_Sprite.setOrigin(getCollider().width, 0.0f);
 		}
 
 		// Sprawdzanie kolizji z platform¹
 		for (Platform* platform : _platforms) {
 			if (getPosition().x <= platform->getPosition().x + platform->getCollider().width &&
-				getPosition().x + getCollider().width > platform->getPosition().x &&
+				getPosition().x + getCollider().width >= platform->getPosition().x + 20.0f &&
 				getPosition().y <= platform->getPosition().y + platform->getCollider().height &&
 				getPosition().y + getCollider().height > platform->getPosition().y - 40.0f) {
-				m_Sprite.setPosition(getPosition().x - PLAYER_SPEED / 75.0f, getPosition().y);
-				m_Sprite.setScale(1.0f, 1.0f);
-				m_Sprite.setOrigin(0, 0.0f);
+				m_Sprite.setPosition(getPosition().x + PLAYER_SPEED / 75.0f, getPosition().y);
+				m_Sprite.setScale(-1.0f, 1.0f);
+				m_Sprite.setOrigin(getCollider().width, 0.0f);
 				break;
 			}
 		}
