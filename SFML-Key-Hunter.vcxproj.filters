@@ -111,4 +111,78 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Graphics\Logo.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Key.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Platform.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Player.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\00.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\01.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\02.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\03.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\04.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\05.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\06.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\07.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\08.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\09.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\10.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\11.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\12.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\13.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\14.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\15.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\16.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\17.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\18.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="Assets\Graphics\Maps\#0\19.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

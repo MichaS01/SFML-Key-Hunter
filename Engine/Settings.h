@@ -37,7 +37,7 @@ using std::to_string; // U¿ycie przestrzeni nazw std do u³atwienia konwersji typ
 using std::remove; // U¿ycie przestrzeni nazw std do u³atwienia usuwania elementów z kontenerów
 
 #define DISABLE_TASKBAR TRUE // Sta³a definuj¹ca wy³¹czenie paska zadañ
-#define ENABLE_CONSOLE TRUE // Sta³a definuj¹ca wy³¹czenie konsoli
+#define ENABLE_CONSOLE FALSE // Sta³a definuj¹ca wy³¹czenie konsoli
 #define DEBUGGING FALSE // Sta³a definuj¹ca tryb debugowania
 
 const string GAME_TITLE = "Key Hunter"; // Tytu³ gry

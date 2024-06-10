@@ -83,12 +83,14 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(ProjectDir)\SFML-2.6.1\lib;</LibraryPath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)\SFML-2.6.1\include;</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -134,12 +136,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)\SFML-2.6.1\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>openal32.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;sfml-graphics.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -176,6 +180,32 @@
     <ClInclude Include="Menus\MainMenu.h" />
     <ClInclude Include="Menus\MenusList.h" />
     <ClInclude Include="Menus\PauseMenu.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Graphics\Key.png" />
+    <Image Include="Assets\Graphics\Logo.png" />
+    <Image Include="Assets\Graphics\Maps\#0\00.png" />
+    <Image Include="Assets\Graphics\Maps\#0\01.png" />
+    <Image Include="Assets\Graphics\Maps\#0\02.png" />
+    <Image Include="Assets\Graphics\Maps\#0\03.png" />
+    <Image Include="Assets\Graphics\Maps\#0\04.png" />
+    <Image Include="Assets\Graphics\Maps\#0\05.png" />
+    <Image Include="Assets\Graphics\Maps\#0\06.png" />
+    <Image Include="Assets\Graphics\Maps\#0\07.png" />
+    <Image Include="Assets\Graphics\Maps\#0\08.png" />
+    <Image Include="Assets\Graphics\Maps\#0\09.png" />
+    <Image Include="Assets\Graphics\Maps\#0\10.png" />
+    <Image Include="Assets\Graphics\Maps\#0\11.png" />
+    <Image Include="Assets\Graphics\Maps\#0\12.png" />
+    <Image Include="Assets\Graphics\Maps\#0\13.png" />
+    <Image Include="Assets\Graphics\Maps\#0\14.png" />
+    <Image Include="Assets\Graphics\Maps\#0\15.png" />
+    <Image Include="Assets\Graphics\Maps\#0\16.png" />
+    <Image Include="Assets\Graphics\Maps\#0\17.png" />
+    <Image Include="Assets\Graphics\Maps\#0\18.png" />
+    <Image Include="Assets\Graphics\Maps\#0\19.png" />
+    <Image Include="Assets\Graphics\Platform.png" />
+    <Image Include="Assets\Graphics\Player.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
